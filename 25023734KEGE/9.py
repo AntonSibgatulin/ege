@@ -1,20 +1,20 @@
 file = open("files/09_7588.csv")
 
+numbers = []
+for x in range(3200):
+    f1, f2, f3, f4, f5 = (map(int, file.readline().split(",")))
+    arr = [f1, f2, f3, f4, f5]
+    numbers.append(arr)
+
 
 def check(array):
     string = " "+str(array[0]) + " " + str(array[1]) + " " + str(array[2]) + " " + str(array[3]) + " " + str(array[4])+" "
-    if string.count(" "+str(array[0])+ " ") > 1:
-        return False
-    elif string.count(" "+str(array[1])+ " ") > 1:
-        return False
-    elif string.count(" "+str(array[2])+ " ") > 1:
-        return False
-    elif string.count(" "+str(array[3])+ " ") > 1:
-        return False
-    elif string.count(" "+str(array[4])+ " ") > 1:
+    dup = [x for x in array if array.count(x) > 1]
+    if len(dup)>0:
         return False
     else:
         return True
+
 
 
 def checkNum(array):
@@ -27,11 +27,7 @@ def checkNum(array):
         return False
 
 
-numbers = []
-for x in range(3200):
-    f1, f2, f3, f4, f5 = (map(int, file.readline().split(",")))
-    arr = [f1, f2, f3, f4, f5]
-    numbers.append(arr)
+
 
 count = 0
 for x in numbers:
